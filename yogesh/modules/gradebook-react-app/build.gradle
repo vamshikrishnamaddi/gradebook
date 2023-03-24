@@ -1,0 +1,5 @@
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+	compile project(":modules:gradebook:gradebook-api")
+	compile project(":modules:gradebook:gradebook-service")
+}

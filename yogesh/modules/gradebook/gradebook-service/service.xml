@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.liferay.training.gradebook">
+	<namespace>Gradebook</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity name="Assignment" local-service="true"
+		remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="assignmentId" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="title" type="String"></column>
+        <column name="description" type="String"></column>
+        <column name="dueDate" type="Date"></column>
+        
+        <!-- Order -->
+        <order by='asc'>
+        <order-column name="title" />
+        </order>
+        
+        
+        <!-- Finder Methods -->
+        <finder return-type="Collection" name="GroupId">
+        <finder-column name="groupId"></finder-column>
+        </finder>
+        
+        
+        <!-- References to group entity service -->
+        <reference entity="Group" package-path="com.liferay.portal"></reference>
+        
+        <!-- entity for intergation to asset framework -->
+        <reference entity="AssetEntry" package-path="com.liferay.portlet.asset"></reference>
+        <reference entity="AssetLink" package-path="com.liferay.portlet.asset"></reference>
+        <reference entity="AssetTag" package-path="com.liferay.portlet.asset"></reference>
+  		
+  		<!-- Exceptions -->
+  		<exceptions>
+  		<exception>AssignmentValidation</exception>
+  		</exceptions>
+  		
+	</entity>
+	<entity local-service="true" name="Krishna" remote-service="true">
+
+		<!-- PK fields -->
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+
+		<!-- Other fields -->
+
+		<!-- Order -->
+		<column name="name" type="String"></column>
+		<column name="description" type="String"></column>
+		<column name="userId" type="int" primary="true"></column>
+
+		<order by="asc">
+			<order-column name="userId" order-by="asc"></order-column>
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="Field2" return-type="Collection">
+			<finder-column name="userId"></finder-column>
+		</finder>
+		<finder name="description" return-type="name">
+			<finder-column name="description"></finder-column>
+		</finder>
+
+		<!-- PK fields -->
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+
+
+		<!-- PK fields -->
+
+		<column name="krishnaId" primary="false" type="long"></column>
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+	</entity>
+</service-builder>

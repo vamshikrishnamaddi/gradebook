@@ -1,0 +1,5 @@
+Bundle-Name: gradebook-react-app
+Bundle-SymbolicName: gradebook.react.app
+Bundle-Version: 1.0.0
+Export-Package: gradebook.react.app.constants
+Web-ContextPath: /gradebook-react-app
